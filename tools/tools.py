@@ -63,3 +63,34 @@ def determinant(A: list[list[float]]) -> float:
             for j in range(k + 1, n):
                 A[i][j] -= factor * A[k][j]
     return det
+
+def matrix_multiply(
+        A: list[list[float]],
+        B: list[list[float]]
+) -> list[list[float]]:
+    n = len(A)
+    m = len(A[0])
+    p = len(B[0])
+    result = [
+        [0.0 for _ in range(p)]
+        for _ in range(n)
+    ]
+    for i in range(n):
+        for j in range(p):
+            for k in range(m):
+                result[i][j] += A[i][k] * B[k][j]
+    return result
+
+def matrices_close(
+        A: list[list[float]],
+        B: list[list[float]],
+        eps: float = 1e-10
+) -> bool:
+    n, m = matrix_size(A)
+    if matrix_size(B) != (n, m):
+        return False
+    for i in range(n):
+        for j in range(m):
+            if abs(A[i][j] - B[i][j]) > eps:
+                return False
+    return True
