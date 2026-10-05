@@ -94,3 +94,9 @@ def matrices_close(
             if abs(A[i][j] - B[i][j]) > eps:
                 return False
     return True
+
+def norma_vector(v: list[float]):
+    return sum(i ** 2 for i in v) ** 0.5
+
+def minus_vector(a: list[float], b: list[float]):
+    return [i - j for i, j in zip(a, b)]
