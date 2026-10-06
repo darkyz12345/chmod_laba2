@@ -10,7 +10,7 @@ def plot_jacobi_convergence(
     plt.semilogy(
         iterations,
         history,
-        marker='.',
+        marker='o',
         markersize=4
     )
     plt.xlabel("Номер итерации $k$")
